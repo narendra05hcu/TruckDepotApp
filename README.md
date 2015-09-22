@@ -1,14 +1,15 @@
-appengine-modules-sample-java
+TruckdepotWebapp
 
 
-It has 2 web apps each deployed to a different module: guestbook and shardedcounter.
+It has 2 web apps each deployed to a different module: default and truckdepotservice.
 
-Usage (After changing the app id in the appengine-modules-ear/src/main/application/META-INF/appengine-application.xml):
 
-    git clone https://github.com/GoogleCloudPlatform/appengine-modules-sample-java.git
-    cd appengine-modules-sample-java
-    mvn install
+    git clone https://github.com/truck-depot/TruckDepotApp.git
+   
+   
+    
     cd appengine-modules-ear
+	mvn install
     #to test it locally:
     mvn appengine:devserver
     #or to deploy it:
