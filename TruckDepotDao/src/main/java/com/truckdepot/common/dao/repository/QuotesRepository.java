@@ -5,9 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 import com.truckdepot.common.dao.entities.Quote;
 
 
-public interface QuotesRepository extends CrudRepository<Quote, Integer> {
+public interface QuotesRepository extends CrudRepository<Quote, Long> {
 	
-	Quote findByQuoteId(int quoteId);
+	Quote findByQuoteId(long quoteId);
 	
 	
 }

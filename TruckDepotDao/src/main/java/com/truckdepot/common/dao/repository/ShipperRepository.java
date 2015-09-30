@@ -5,9 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 import com.truckdepot.common.dao.entities.Shipper;
 
 
-public interface ShipperRepository extends CrudRepository<Shipper, Integer> {
+public interface ShipperRepository extends CrudRepository<Shipper, Long> {
 	
-	Shipper findByShipperId(int shipperId);
+	Shipper findByShipperId(long shipperId);
 	
 
 }

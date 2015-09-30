@@ -5,9 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 import com.truckdepot.common.dao.entities.CarrierVehicle;
 
 
-public interface CarrierVehicleRepository extends CrudRepository<CarrierVehicle, Integer> {
+public interface CarrierVehicleRepository extends CrudRepository<CarrierVehicle, Long> {
 	
-	CarrierVehicle findByVehicleId(int vehicleId);
+	CarrierVehicle findByVehicleId(long vehicleId);
 	
 
 }

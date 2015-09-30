@@ -12,5 +12,5 @@
     <context:component-scan base-package="com.truckdepot" />
         
         
-	<import resource="classpath*:META-INF/spring/jpa-config.xml"/>
+	<import resource="classpath:spring/jpa-config.xml"/>
 </beans>

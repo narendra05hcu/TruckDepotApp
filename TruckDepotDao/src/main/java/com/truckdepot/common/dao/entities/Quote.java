@@ -1,10 +1,23 @@
 package com.truckdepot.common.dao.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -29,13 +42,16 @@ public class Quote implements Serializable {
 	@Column(name="delivery_time")
 	private Time deliveryTime;
 
-	@Column(name="destination_address")
-	private int destinationAddress;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="destination_address_id")
+	private Address destinationAddress;
 
+	@Column(name="notes")
 	private String notes;
 
-	@Column(name="origin_address")
-	private int originAddress;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="origin_address_id")
+	private Address originAddress;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="pickup_date")
@@ -83,11 +99,11 @@ public class Quote implements Serializable {
 		this.deliveryTime = deliveryTime;
 	}
 
-	public int getDestinationAddress() {
+	public Address getDestinationAddress() {
 		return this.destinationAddress;
 	}
 
-	public void setDestinationAddress(int destinationAddress) {
+	public void setDestinationAddress(Address destinationAddress) {
 		this.destinationAddress = destinationAddress;
 	}
 
@@ -99,11 +115,11 @@ public class Quote implements Serializable {
 		this.notes = notes;
 	}
 
-	public int getOriginAddress() {
+	public Address getOriginAddress() {
 		return this.originAddress;
 	}
 
-	public void setOriginAddress(int originAddress) {
+	public void setOriginAddress(Address originAddress) {
 		this.originAddress = originAddress;
 	}
 

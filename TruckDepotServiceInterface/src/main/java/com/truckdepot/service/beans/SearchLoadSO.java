@@ -11,7 +11,7 @@ public class SearchLoadSO {
 	private AddressSO destinationAddress;
 	private Date pickupDate;
 	private Date deliveryDate;
-	private Time pickTime;
+	private Time pickupTime;
 	private Time deliveryTime;
 	private long quoteId;
 	private String notes;
@@ -72,12 +72,12 @@ public class SearchLoadSO {
 		this.deliveryDate = deliveryDate;
 	}
 
-	public Time getPickTime() {
-		return pickTime;
+	public Time getPickupTime() {
+		return pickupTime;
 	}
 
-	public void setPickTime(Time pickTime) {
-		this.pickTime = pickTime;
+	public void setPickupTime(Time pickupTime) {
+		this.pickupTime = pickupTime;
 	}
 
 	public Time getDeliveryTime() {

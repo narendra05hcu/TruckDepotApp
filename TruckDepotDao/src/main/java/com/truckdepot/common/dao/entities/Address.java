@@ -28,6 +28,7 @@ public class Address implements Serializable {
 
 	private String state;
 	
+	@Column(name="land_mark")
 	private String landMark;
 
 	public Address() {

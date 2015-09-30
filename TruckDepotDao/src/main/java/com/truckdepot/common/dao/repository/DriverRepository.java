@@ -5,9 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 import com.truckdepot.common.dao.entities.TruckDriver;
 
 
-public interface DriverRepository extends CrudRepository<TruckDriver, Integer> {
+public interface DriverRepository extends CrudRepository<TruckDriver, Long> {
 	
-	TruckDriver findByDriverId(int driverId);
+	TruckDriver findByDriverId(long driverId);
 	
 
 }

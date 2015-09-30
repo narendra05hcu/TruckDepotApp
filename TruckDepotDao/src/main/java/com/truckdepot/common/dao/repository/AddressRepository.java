@@ -5,9 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 import com.truckdepot.common.dao.entities.Address;
 
 
-public interface AddressRepository extends CrudRepository<Address, Integer> {
+public interface AddressRepository extends CrudRepository<Address, Long> {
 	
-	Address findByAddressId(int addressId);
+	Address findByAddressId(long addressId);
 	
 
 }

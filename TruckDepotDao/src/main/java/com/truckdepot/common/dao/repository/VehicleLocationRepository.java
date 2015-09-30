@@ -6,9 +6,9 @@ import com.truckdepot.common.dao.entities.CarrierVehicleDriver;
 import com.truckdepot.common.dao.entities.CarrierVehicleLocation;
 
 
-public interface VehicleLocationRepository extends CrudRepository<CarrierVehicleLocation, Integer> {
+public interface VehicleLocationRepository extends CrudRepository<CarrierVehicleLocation, Long> {
 	
-	CarrierVehicleDriver findById(int id);
+	CarrierVehicleDriver findById(long id);
 	
 
 }

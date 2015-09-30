@@ -6,9 +6,9 @@ import com.truckdepot.common.dao.entities.Quote;
 import com.truckdepot.common.dao.entities.Shipment;
 
 
-public interface ShipmentsRepository extends CrudRepository<Shipment, Integer> {
+public interface ShipmentsRepository extends CrudRepository<Shipment, Long> {
 	
-	Quote findByShipmentId(int shipmentId);
+	Quote findByShipmentId(long shipmentId);
 	
 
 }

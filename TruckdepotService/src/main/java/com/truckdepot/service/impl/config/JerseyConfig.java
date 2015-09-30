@@ -5,7 +5,6 @@ import org.glassfish.jersey.server.ServerProperties;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 
 import com.truckdepot.service.impl.SearchServiceImpl;
-import com.truckdepot.service.impl.TestJerseyWS;
 
 public class JerseyConfig extends ResourceConfig {
 	public JerseyConfig() {
@@ -16,7 +15,7 @@ public class JerseyConfig extends ResourceConfig {
         register(RequestContextFilter.class);
         register(JacksonObjectMapperConfig.class);
         register(ValidationConfigurationContextResolver.class);
-        register(TestJerseyWS.class);
+        
         register(SearchServiceImpl.class);
         
     }
