@@ -15,7 +15,7 @@ public class JerseyConfig extends ResourceConfig {
         register(RequestContextFilter.class);
         register(JacksonObjectMapperConfig.class);
         register(ValidationConfigurationContextResolver.class);
-        
+        //service classe
         register(SearchServiceImpl.class);
         
     }

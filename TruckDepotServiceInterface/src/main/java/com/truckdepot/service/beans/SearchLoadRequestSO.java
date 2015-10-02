@@ -1,5 +1,6 @@
 package com.truckdepot.service.beans;
 
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.QueryParam;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -14,7 +15,7 @@ public class SearchLoadRequestSO {
 	@NotEmpty
 	private String toCity;
 	@QueryParam(value="availableDate")
-	@NotEmpty @IsDate
+	@NotEmpty @IsDate(message="{com.truckdepot.service.validator.IsDate.message}")
 	private String availableDate;
 
 	public String getFromCity() {

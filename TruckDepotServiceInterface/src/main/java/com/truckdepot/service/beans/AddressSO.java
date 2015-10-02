@@ -1,16 +1,19 @@
 package com.truckdepot.service.beans;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class AddressSO {
+	@NotEmpty
 	private String city;
-
+	@NotEmpty
 	private String line1;
-
+	@NotEmpty
 	private String line2;
-
+	@NotEmpty
 	private String pincode;
-
+	@NotEmpty
 	private String state;
-
+	@NotEmpty
 	private String landMark;
 
 	public String getCity() {

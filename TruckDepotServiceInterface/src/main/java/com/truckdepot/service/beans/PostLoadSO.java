@@ -13,12 +13,13 @@ public class PostLoadSO {
 	private AddressSO originAddress;
 	@Valid
 	private AddressSO destinationAddress;
-	@NotEmpty @IsDate
+	@NotEmpty @IsDate(message="{com.truckdepot.service.validator.IsDate.message}")
 	private String pickupDate;
-	@NotEmpty @IsDate
+	@NotEmpty @IsDate(message="{com.truckdepot.service.validator.IsDate.message}")
 	private String deliveryDate;
-	@NotEmpty @IsTime
+	@IsTime(message="{com.truckdepot.service.validator.IsTime.message}")
 	private String pickupTime;
+	@IsTime(message="{com.truckdepot.service.validator.IsTime.message}")
 	private String deliveryTime;
 	private String notes;
 	@NotEmpty @Min(value=0)
