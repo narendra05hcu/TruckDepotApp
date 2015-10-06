@@ -2,6 +2,7 @@ package com.truckdepot.service.beans;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -22,7 +23,7 @@ public class PostLoadSO {
 	@IsTime(message="{com.truckdepot.service.validator.IsTime.message}")
 	private String deliveryTime;
 	private String notes;
-	@NotEmpty @Min(value=0)
+	@NotNull @Min(value=0)
 	private long shipperId;
 
 	public AddressSO getOriginAddress() {

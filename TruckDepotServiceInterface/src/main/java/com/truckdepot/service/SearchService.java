@@ -8,10 +8,11 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import com.truckdepot.service.beans.PostLoadSO;
+import com.truckdepot.service.beans.ResponseSO;
 import com.truckdepot.service.beans.SearchLoadRequestSO;
+import com.truckdepot.service.beans.SearchLoadResponseSO;
 
 @Consumes({ MediaType.APPLICATION_JSON })
 @Produces({ MediaType.APPLICATION_JSON })
@@ -19,10 +20,10 @@ import com.truckdepot.service.beans.SearchLoadRequestSO;
 public interface SearchService {
 	@GET
     @Path("/load")
-	public Response list(@BeanParam @Valid SearchLoadRequestSO searchLoadRequestSO);
+	public SearchLoadResponseSO list(@BeanParam @Valid SearchLoadRequestSO searchLoadRequestSO);
 	
 	@POST
 	@Path("/create-load")
-	public Response createQuote(@Valid PostLoadSO postLoadSO);
+	public ResponseSO createQuote(@Valid PostLoadSO postLoadSO);
 
 }

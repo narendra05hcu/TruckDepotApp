@@ -2,7 +2,7 @@ package com.truckdepot.service.beans;
 
 import java.util.List;
 
-public class SearchLoadResponseSO {
+public class SearchLoadResponseSO extends ResponseSO{
 	private List<SearchLoadSO> searchLoadSOs;
 
 	public List<SearchLoadSO> getSearchLoadSOs() {

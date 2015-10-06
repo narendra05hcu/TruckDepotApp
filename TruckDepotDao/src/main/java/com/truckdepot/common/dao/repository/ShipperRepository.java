@@ -7,7 +7,7 @@ import com.truckdepot.common.dao.entities.Shipper;
 
 public interface ShipperRepository extends CrudRepository<Shipper, Long> {
 	
-	Shipper findByShipperId(long shipperId);
+	Shipper findByUserId(long userId);
 	
 
 }

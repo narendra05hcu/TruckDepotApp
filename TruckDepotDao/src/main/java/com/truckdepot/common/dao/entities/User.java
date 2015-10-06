@@ -2,11 +2,21 @@ package com.truckdepot.common.dao.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 import com.truckdepot.common.dao.enums.UserType;
-
-import java.util.List;
 
 
 /**
@@ -16,6 +26,8 @@ import java.util.List;
 @Entity
 @Table(name="users")
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@Inheritance(strategy = InheritanceType.JOINED)
+//@DiscriminatorColumn(name="user_type", discriminatorType=DiscriminatorType.STRING)
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -31,16 +43,16 @@ public class User implements Serializable {
 	private String emailId;
 
 	@Column(name="email_verified")
-	private byte emailVerified;
+	private Boolean emailVerified;
 
 	@Column(name="first_name")
 	private String firstName;
 
 	@Column(name="is_active")
-	private byte isActive;
+	private Boolean isActive;
 
 	@Column(name="is_admin")
-	private byte isAdmin;
+	private Boolean isAdmin;
 
 	@Column(name="last_name")
 	private String lastName;
@@ -49,21 +61,13 @@ public class User implements Serializable {
 	private String mobileNumber;
 
 	@Column(name="mobile_verified")
-	private byte mobileVerified;
+	private Boolean mobileVerified;
 
 	private String password;
 
 	@Column(name="user_type")
 	@Enumerated(EnumType.STRING)
 	private UserType userType;
-
-	//bi-directional many-to-one association to Carrier
-	@OneToMany(mappedBy="user")
-	private List<Carrier> carriers;
-
-	//bi-directional many-to-one association to Shipper
-	@OneToMany(mappedBy="user")
-	private List<Shipper> shippers;
 
 	public User() {
 	}
@@ -92,11 +96,11 @@ public class User implements Serializable {
 		this.emailId = emailId;
 	}
 
-	public byte getEmailVerified() {
+	public Boolean getEmailVerified() {
 		return this.emailVerified;
 	}
 
-	public void setEmailVerified(byte emailVerified) {
+	public void setEmailVerified(Boolean emailVerified) {
 		this.emailVerified = emailVerified;
 	}
 
@@ -108,19 +112,19 @@ public class User implements Serializable {
 		this.firstName = firstName;
 	}
 
-	public byte getIsActive() {
+	public Boolean getIsActive() {
 		return this.isActive;
 	}
 
-	public void setIsActive(byte isActive) {
+	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
 
-	public byte getIsAdmin() {
+	public Boolean getIsAdmin() {
 		return this.isAdmin;
 	}
 
-	public void setIsAdmin(byte isAdmin) {
+	public void setIsAdmin(Boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
 
@@ -140,11 +144,11 @@ public class User implements Serializable {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public byte getMobileVerified() {
+	public Boolean getMobileVerified() {
 		return this.mobileVerified;
 	}
 
-	public void setMobileVerified(byte mobileVerified) {
+	public void setMobileVerified(Boolean mobileVerified) {
 		this.mobileVerified = mobileVerified;
 	}
 
@@ -162,50 +166,6 @@ public class User implements Serializable {
 
 	public void setUserType(UserType userType) {
 		this.userType = userType;
-	}
-
-	public List<Carrier> getCarriers() {
-		return this.carriers;
-	}
-
-	public void setCarriers(List<Carrier> carriers) {
-		this.carriers = carriers;
-	}
-
-	public Carrier addCarrier(Carrier carrier) {
-		getCarriers().add(carrier);
-		carrier.setUser(this);
-
-		return carrier;
-	}
-
-	public Carrier removeCarrier(Carrier carrier) {
-		getCarriers().remove(carrier);
-		carrier.setUser(null);
-
-		return carrier;
-	}
-
-	public List<Shipper> getShippers() {
-		return this.shippers;
-	}
-
-	public void setShippers(List<Shipper> shippers) {
-		this.shippers = shippers;
-	}
-
-	public Shipper addShipper(Shipper shipper) {
-		getShippers().add(shipper);
-		shipper.setUser(this);
-
-		return shipper;
-	}
-
-	public Shipper removeShipper(Shipper shipper) {
-		getShippers().remove(shipper);
-		shipper.setUser(null);
-
-		return shipper;
 	}
 
 }

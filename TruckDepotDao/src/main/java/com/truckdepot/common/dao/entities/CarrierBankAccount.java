@@ -41,7 +41,7 @@ public class CarrierBankAccount implements Serializable {
 	private String ifscCode;
 
 	//bi-directional many-to-one association to Carrier
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="carrier_id")
 	private Carrier carrier;
 

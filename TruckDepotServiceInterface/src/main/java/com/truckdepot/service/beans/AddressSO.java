@@ -7,7 +7,7 @@ public class AddressSO {
 	private String city;
 	@NotEmpty
 	private String line1;
-	@NotEmpty
+	
 	private String line2;
 	@NotEmpty
 	private String pincode;

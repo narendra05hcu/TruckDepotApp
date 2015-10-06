@@ -2,6 +2,8 @@ package com.truckdepot.service.impl.bo;
 
 import java.util.List;
 
+import javax.ws.rs.core.Response.Status;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import com.truckdepot.common.dao.repository.ShipperRepository;
 import com.truckdepot.common.dao.repository.custom.SearchQuotesDao;
 import com.truckdepot.common.util.DateUtil;
 import com.truckdepot.service.beans.PostLoadSO;
+import com.truckdepot.service.beans.ResponseSO;
 import com.truckdepot.service.beans.SearchLoadRequestSO;
 import com.truckdepot.service.beans.SearchLoadResponseSO;
 import com.truckdepot.service.impl.converter.SearchDOToSOConverter;
@@ -32,14 +35,18 @@ public class SearchBOImpl {
 		
 		List<Quote> quotes = searchQuotesDao.searhcQuotes(searchRequestSO.getFromCity(), searchRequestSO.getToCity(), DateUtil.parseDate(searchRequestSO.getAvailableDate()));
 		SearchLoadResponseSO searchLaodResponseSO = SearchDOToSOConverter.convertToSearchLoadList(quotes);
+		searchLaodResponseSO.setStatus(Status.OK.getStatusCode());
 		
 		return searchLaodResponseSO;
 
 	}
 
-	public void createQuote(PostLoadSO postLoadSO) {
+	public ResponseSO createQuote(PostLoadSO postLoadSO) {
 		Quote quote = SearchSOToDOConverter.convertToQuote(postLoadSO);
-		quote.setShipper(shipperRepository.findByShipperId(postLoadSO.getShipperId()));
+		quote.setShipper(shipperRepository.findByUserId(postLoadSO.getShipperId()));
 		quotesRepository.save(quote);
+		ResponseSO responseSO = new ResponseSO();
+		responseSO.setStatus(Status.OK.getStatusCode());
+		return responseSO;
 	}
 }

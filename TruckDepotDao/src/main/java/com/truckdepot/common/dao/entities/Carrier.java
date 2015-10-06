@@ -1,9 +1,17 @@
 package com.truckdepot.common.dao.entities;
 
-import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  * The persistent class for the carrier database table.
@@ -11,62 +19,64 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Carrier.findAll", query="SELECT c FROM Carrier c")
-public class Carrier implements Serializable {
+@DiscriminatorValue("CARRIER")
+public class Carrier extends User {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	/*@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="carrier_id")
-	private long carrierId;
+	private long carrierId;*/
 
-	@Column(name="address_id")
-	private int addressId;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="address_id")
+	private Address address;
 
 	@Column(name="business_type")
 	private String businessType;
 
-	//bi-directional many-to-one association to User
-	@ManyToOne
+	/*//bi-directional many-to-one association to User
+	@OneToOne
 	@JoinColumn(name="user_id")
-	private User user;
+	private User user;*/
 
 	//bi-directional many-to-one association to CarrierBankAccount
-	@OneToMany(mappedBy="carrier")
-	private List<CarrierBankAccount> carrierBankAccounts;
+	@OneToOne(mappedBy="carrier")
+	private CarrierBankAccount carrierBankAccount;
 
 	//bi-directional many-to-one association to CarrierDriver
-	@OneToMany(mappedBy="carrier")
+	@OneToMany(mappedBy="carrier",fetch=FetchType.LAZY)
 	private List<TruckDriver> carrierDrivers;
 
 	//bi-directional many-to-one association to CarrierShipment
-	@OneToMany(mappedBy="carrier")
+	@OneToMany(mappedBy="carrier",fetch=FetchType.LAZY)
 	private List<CarrierShipment> carrierShipments;
 
 	//bi-directional many-to-one association to CarrierVehicle
-	@OneToMany(mappedBy="carrier")
+	@OneToMany(mappedBy="carrier",fetch=FetchType.LAZY)
 	private List<CarrierVehicle> carrierVehicles;
 
 	//bi-directional many-to-one association to QuotesPrice
-	@OneToMany(mappedBy="carrier")
+	@OneToMany(mappedBy="carrier",fetch=FetchType.LAZY)
 	private List<QuotesPrice> quotesPrices;
 
 	public Carrier() {
 	}
 
-	public long getCarrierId() {
+	/*public long getCarrierId() {
 		return this.carrierId;
 	}
 
 	public void setCarrierId(long carrierId) {
 		this.carrierId = carrierId;
+	}*/
+
+	public Address getAddress() {
+		return this.address;
 	}
 
-	public int getAddressId() {
-		return this.addressId;
-	}
-
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public String getBusinessType() {
@@ -77,34 +87,20 @@ public class Carrier implements Serializable {
 		this.businessType = businessType;
 	}
 
-	public User getUser() {
+	/*public User getUser() {
 		return this.user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
+	}*/
+
+	public CarrierBankAccount getCarrierBankAccount() {
+		return this.carrierBankAccount;
 	}
 
-	public List<CarrierBankAccount> getCarrierBankAccounts() {
-		return this.carrierBankAccounts;
-	}
-
-	public void setCarrierBankAccounts(List<CarrierBankAccount> carrierBankAccounts) {
-		this.carrierBankAccounts = carrierBankAccounts;
-	}
-
-	public CarrierBankAccount addCarrierBankAccount(CarrierBankAccount carrierBankAccount) {
-		getCarrierBankAccounts().add(carrierBankAccount);
-		carrierBankAccount.setCarrier(this);
-
-		return carrierBankAccount;
-	}
-
-	public CarrierBankAccount removeCarrierBankAccount(CarrierBankAccount carrierBankAccount) {
-		getCarrierBankAccounts().remove(carrierBankAccount);
-		carrierBankAccount.setCarrier(null);
-
-		return carrierBankAccount;
+	public void setCarrierBankAccount(CarrierBankAccount carrierBankAccount) {
+		this.carrierBankAccount = carrierBankAccount;
 	}
 
 	public List<TruckDriver> getCarrierDrivers() {

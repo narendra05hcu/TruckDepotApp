@@ -1,8 +1,15 @@
 package com.truckdepot.common.dao.entities;
 
-import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 
 /**
@@ -11,61 +18,64 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Shipper.findAll", query="SELECT s FROM Shipper s")
-public class Shipper implements Serializable {
+@DiscriminatorValue("SHIPPER")
+public class Shipper extends User {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	/*@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="shipper_id")
-	private long shipperId;
+	private long shipperId;*/
 
-	@Column(name="default_destination")
-	private int defaultDestination;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="default_destination")
+	private Address defaultDestination;
 
-	@Column(name="default_origin")
-	private int defaultOrigin;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="default_origin")
+	private Address defaultOrigin;
 
 	//bi-directional many-to-one association to Quote
-	@OneToMany(mappedBy="shipper")
+	@OneToMany(mappedBy="shipper",fetch=FetchType.LAZY)
 	private List<Quote> quotes;
 
 	//bi-directional many-to-one association to Shipment
-	@OneToMany(mappedBy="shipper")
+	@OneToMany(mappedBy="shipper",fetch=FetchType.LAZY)
 	private List<Shipment> shipments;
 
 	//bi-directional many-to-one association to User
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name="user_id")
-	private User user;
+	private User user;*/
 
 	//bi-directional many-to-one association to ShipperQuote
-	@OneToMany(mappedBy="shipper")
+	@OneToMany(mappedBy="shipper",fetch=FetchType.LAZY)
 	private List<ShipperQuote> shipperQuotes;
 
 	public Shipper() {
 	}
 
-	public long getShipperId() {
+	/*public long getShipperId() {
 		return this.shipperId;
 	}
 
 	public void setShipperId(long shipperId) {
 		this.shipperId = shipperId;
-	}
+	}*/
 
-	public int getDefaultDestination() {
+	public Address getDefaultDestination() {
 		return this.defaultDestination;
 	}
 
-	public void setDefaultDestination(int defaultDestination) {
+	public void setDefaultDestination(Address defaultDestination) {
 		this.defaultDestination = defaultDestination;
 	}
 
-	public int getDefaultOrigin() {
+	public Address getDefaultOrigin() {
 		return this.defaultOrigin;
 	}
 
-	public void setDefaultOrigin(int defaultOrigin) {
+	public void setDefaultOrigin(Address defaultOrigin) {
 		this.defaultOrigin = defaultOrigin;
 	}
 
@@ -113,13 +123,13 @@ public class Shipper implements Serializable {
 		return shipment;
 	}
 
-	public User getUser() {
+	/*public User getUser() {
 		return this.user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
-	}
+	}*/
 
 	public List<ShipperQuote> getShipperQuotes() {
 		return this.shipperQuotes;

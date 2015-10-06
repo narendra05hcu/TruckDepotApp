@@ -9,7 +9,7 @@ import org.apache.commons.lang.time.DateUtils;
 public class DateUtil {
 	public static Date parseDate(String dateString) {
 		try {
-			return DateUtils.parseDate(dateString,
+			return DateUtils.parseDateStrictly(dateString,
 					new String[] { "dd-MM-yyyy"});
 		} catch (ParseException e1) {
 			System.err
@@ -23,7 +23,7 @@ public class DateUtil {
 	public static Time parseTime(String timeString) {
 		try {
 			Date date = DateUtils.parseDate(timeString,
-					new String[] { "hh:mm"});
+					new String[] { "hh:mm:ss"});
 			return new Time(date.getTime());
 		} catch (ParseException e1) {
 			System.err

@@ -7,7 +7,7 @@ import com.truckdepot.common.dao.entities.Carrier;
 
 public interface CarrierRepository extends CrudRepository<Carrier, Long> {
 	
-	Carrier findByCarrierId(long carrierId);
+	Carrier findByUserId(long userId);
 	
 
 }
