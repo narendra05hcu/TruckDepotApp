@@ -9,7 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.truckdepot.service.beans.PostLoadSO;
+import com.truckdepot.service.beans.PostLoadRequestSO;
 import com.truckdepot.service.beans.ResponseSO;
 import com.truckdepot.service.beans.SearchLoadRequestSO;
 import com.truckdepot.service.beans.SearchLoadResponseSO;
@@ -24,6 +24,6 @@ public interface SearchService {
 	
 	@POST
 	@Path("/create-load")
-	public ResponseSO createQuote(@Valid PostLoadSO postLoadSO);
+	public ResponseSO createQuote(@Valid PostLoadRequestSO postLoadSO);
 
 }

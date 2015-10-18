@@ -3,8 +3,6 @@ package com.truckdepot.service.beans;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import com.truckdepot.service.enums.UserType;
 
 public class UserRegistrationRequestSO {

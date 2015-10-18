@@ -8,7 +8,21 @@
 	<definition name="home" template="/WEB-INF/jsp/home.jsp" >
 		<put-attribute name="header" value="/WEB-INF/jsp/header.jsp"/>
 		<!-- put-attribute name="commonFiles" value="/WEB-INF/jsp/vendorCommonFiles.jsp" /> -->
-		<put-attribute name="sidePanel" value="/WEB-INF/jsp/sidePanel.jsp" />
+		<put-attribute name="inner" value="/WEB-INF/jsp/home-inner.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
+	</definition>
+	
+	<definition name="login" template="/WEB-INF/jsp/login.jsp" >
+		<put-attribute name="header" value="/WEB-INF/jsp/header.jsp"/>
+		<!-- put-attribute name="commonFiles" value="/WEB-INF/jsp/vendorCommonFiles.jsp" /> -->
+		<put-attribute name="inner" value="/WEB-INF/jsp/login-inner.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
+	</definition>
+	
+	<definition name="register" template="/WEB-INF/jsp/registration.jsp" >
+		<put-attribute name="header" value="/WEB-INF/jsp/header.jsp"/>
+		<!-- put-attribute name="commonFiles" value="/WEB-INF/jsp/vendorCommonFiles.jsp" /> -->
+		<put-attribute name="inner" value="/WEB-INF/jsp/registration-inner.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
 	</definition>
 	

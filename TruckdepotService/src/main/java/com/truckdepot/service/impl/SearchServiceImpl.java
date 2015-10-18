@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.truckdepot.service.SearchService;
-import com.truckdepot.service.beans.PostLoadSO;
+import com.truckdepot.service.beans.PostLoadRequestSO;
 import com.truckdepot.service.beans.ResponseSO;
 import com.truckdepot.service.beans.SearchLoadRequestSO;
 import com.truckdepot.service.beans.SearchLoadResponseSO;
@@ -21,8 +21,8 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public ResponseSO createQuote(PostLoadSO postLoadSO) {
-		return searBoImpl.createQuote(postLoadSO);
+	public ResponseSO createQuote(PostLoadRequestSO postLoadRequestSO) {
+		return searBoImpl.createQuote(postLoadRequestSO);
 	}
 
 }

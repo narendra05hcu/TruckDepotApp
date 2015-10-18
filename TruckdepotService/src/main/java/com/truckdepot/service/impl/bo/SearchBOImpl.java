@@ -12,7 +12,7 @@ import com.truckdepot.common.dao.repository.QuotesRepository;
 import com.truckdepot.common.dao.repository.ShipperRepository;
 import com.truckdepot.common.dao.repository.custom.SearchQuotesDao;
 import com.truckdepot.common.util.DateUtil;
-import com.truckdepot.service.beans.PostLoadSO;
+import com.truckdepot.service.beans.PostLoadRequestSO;
 import com.truckdepot.service.beans.ResponseSO;
 import com.truckdepot.service.beans.SearchLoadRequestSO;
 import com.truckdepot.service.beans.SearchLoadResponseSO;
@@ -41,9 +41,9 @@ public class SearchBOImpl {
 
 	}
 
-	public ResponseSO createQuote(PostLoadSO postLoadSO) {
-		Quote quote = SearchSOToDOConverter.convertToQuote(postLoadSO);
-		quote.setShipper(shipperRepository.findByUserId(postLoadSO.getShipperId()));
+	public ResponseSO createQuote(PostLoadRequestSO postLoadRequestSO) {
+		Quote quote = SearchSOToDOConverter.convertToQuote(postLoadRequestSO);
+		quote.setShipper(shipperRepository.findByUserId(postLoadRequestSO.getShipperId()));
 		quotesRepository.save(quote);
 		ResponseSO responseSO = new ResponseSO();
 		responseSO.setStatus(Status.OK.getStatusCode());

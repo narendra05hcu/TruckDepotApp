@@ -2,11 +2,11 @@ package com.truckdepot.service.impl.converter;
 
 import com.truckdepot.common.dao.entities.Quote;
 import com.truckdepot.common.util.DateUtil;
-import com.truckdepot.service.beans.PostLoadSO;
+import com.truckdepot.service.beans.PostLoadRequestSO;
 
 public class SearchSOToDOConverter {
 
-	public static Quote convertToQuote(PostLoadSO postLoadSO) {
+	public static Quote convertToQuote(PostLoadRequestSO postLoadSO) {
 		Quote quote = new Quote();
 		quote.setDeliveryDate(DateUtil.parseDate(postLoadSO.getDeliveryDate()));
 		quote.setDeliveryTime(DateUtil.parseTime(postLoadSO.getDeliveryTime()));

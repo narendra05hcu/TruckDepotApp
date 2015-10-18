@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.truckdepot.service.validator.IsDate;
 import com.truckdepot.service.validator.IsTime;
 
-public class PostLoadSO {
+public class PostLoadRequestSO {
 	@Valid
 	private AddressSO originAddress;
 	@Valid

@@ -10,8 +10,6 @@
 
 	<artifactId>TruckdepotWebapp</artifactId>
 	<packaging>war</packaging>
-	<version>1.0</version>
-
 	<name>TruckdepotWebapp</name>
 
 	<properties>
@@ -19,6 +17,7 @@
 		<spring.version>4.0.9.RELEASE</spring.version>
 		<jersey.version>2.22</jersey.version>
 		<tiles.version>3.0.5</tiles.version>
+		<jackson.version>2.6.3</jackson.version>
 	</properties>
 
 	<dependencyManagement>
@@ -38,6 +37,19 @@
 		<!-- Compile/runtime dependencies -->
 		<!-- <dependency> <groupId>com.google.appengine</groupId> <artifactId>appengine-api-1.0-sdk</artifactId> 
 			<version>${appengine.target.version}</version> </dependency> -->
+
+		<dependency>
+			<groupId>com.truckdepot</groupId>
+			<artifactId>TruckDepotServiceInterface</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>jersey-bean-validation</artifactId>
+					<groupId>org.glassfish.jersey.ext</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -53,10 +65,8 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-		</dependency>
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-web</artifactId> 
+			</dependency> -->
 		<!-- Velocity -->
 		<dependency>
 			<groupId>org.apache.velocity</groupId>
@@ -86,11 +96,26 @@
 			<version>${tiles.version}</version>
 		</dependency>
 
-		<!-- Test Dependencies -->
-		<!-- <dependency> <groupId>com.google.appengine</groupId> <artifactId>appengine-testing</artifactId> 
-			<version>${appengine.target.version}</version> <scope>test</scope> </dependency> 
-			<dependency> <groupId>com.google.appengine</groupId> <artifactId>appengine-api-stubs</artifactId> 
-			<version>${appengine.target.version}</version> <scope>test</scope> </dependency> -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>2.22</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>1.19</version>
+		</dependency>
+
+
+
+
 
 	</dependencies>
 
@@ -121,23 +146,10 @@
 					</webResources>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>com.google.appengine</groupId>
-				<artifactId>appengine-maven-plugin</artifactId>
-				<version>${appengine.target.version}</version>
-				<configuration>
-					<enableJarClasses>true</enableJarClasses>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>enhance</goal>
-						</goals>
-					</execution>
-				</executions>
-
-			</plugin>
+			<!-- <plugin> <groupId>com.google.appengine</groupId> <artifactId>appengine-maven-plugin</artifactId> 
+				<version>${appengine.target.version}</version> <configuration> <enableJarClasses>true</enableJarClasses> 
+				</configuration> <executions> <execution> <phase>compile</phase> <goals> 
+				<goal>enhance</goal> </goals> </execution> </executions> </plugin> -->
 		</plugins>
 	</build>
 </project>

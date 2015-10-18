@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/*")
 public class HomePageController {
 	@RequestMapping(value = "/home")
 	public String homePage(HttpServletRequest request, HttpServletResponse response, Model model) {
