@@ -7,9 +7,7 @@
     <version>1.0</version>
   </parent>
 
-  <groupId>com.truckdepot</groupId>
   <artifactId>TruckdepotEar</artifactId>
-  <version>1.0</version>
   <packaging>ear</packaging>
 
   <name>TruckdepotEar</name>

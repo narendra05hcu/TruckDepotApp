@@ -1,6 +1,5 @@
 package com.truckdepot.service.beans;
 
-import javax.validation.constraints.Pattern;
 import javax.ws.rs.QueryParam;
 
 import org.hibernate.validator.constraints.NotEmpty;

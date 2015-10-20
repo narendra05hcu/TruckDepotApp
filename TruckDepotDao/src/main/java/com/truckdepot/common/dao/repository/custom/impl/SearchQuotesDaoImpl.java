@@ -18,6 +18,7 @@ public class SearchQuotesDaoImpl implements SearchQuotesDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Quote> searhcQuotes(String fromCity, String toCity,
 			Date availableDate) {

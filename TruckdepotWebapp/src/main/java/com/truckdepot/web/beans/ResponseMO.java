@@ -1,8 +1,7 @@
 package com.truckdepot.web.beans;
 
-import java.io.Serializable;
 
-public class ResponseMO implements Serializable {
+public class ResponseMO {
 	private int status;
 	private String message;
 

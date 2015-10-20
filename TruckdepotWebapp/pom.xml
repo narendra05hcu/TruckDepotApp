@@ -38,18 +38,7 @@
 		<!-- <dependency> <groupId>com.google.appengine</groupId> <artifactId>appengine-api-1.0-sdk</artifactId> 
 			<version>${appengine.target.version}</version> </dependency> -->
 
-		<dependency>
-			<groupId>com.truckdepot</groupId>
-			<artifactId>TruckDepotServiceInterface</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>jersey-bean-validation</artifactId>
-					<groupId>org.glassfish.jersey.ext</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -101,22 +90,6 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
-
-		<dependency>
-			<groupId>org.glassfish.jersey.core</groupId>
-			<artifactId>jersey-client</artifactId>
-			<version>2.22</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-json</artifactId>
-			<version>1.19</version>
-		</dependency>
-
-
-
-
-
 	</dependencies>
 
 	<build>
